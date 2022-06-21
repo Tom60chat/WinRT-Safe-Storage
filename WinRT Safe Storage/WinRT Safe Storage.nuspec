@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>WinRTSafeStorage.Tom60</id>
+    <version>1.0.0</version>
+    <title>$title$</title>
+    <authors>Tom OLIVIER</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/Tom60chat/WinRT-Safe-Storage</projectUrl>
+    <description>Because WinRT Storage is driving me crazy.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Tom OLIVIER 2022</copyright>
+    <tags>winrt safe storage folder file</tags>
+    <dependencies>
+      <group targetFramework="UAP10.0.16299">
+        
+      </group>
+    </dependencies>
+  </metadata>
+  
+  <files>
+    <file src="..\LICENSE.txt" target=""/>
+    
+    <!-- WinMd and IntelliSense files -->
+    <file src="bin\Debug\WinRT Safe Storage.XML" target="lib\uap10.0.16299"/>
+
+    <!-- WINMDs and resources -->
+    <file src="bin\ARM\Debug\WinRT Safe Storage.dll" target="runtimes\win10-arm"/>
+    <file src="bin\ARM\Debug\WinRT Safe Storage.pri" target="runtimes\win10-arm"/>
+
+    <file src="bin\ARM64\Debug\WinRT Safe Storage.dll" target="runtimes\win10-arm64"/>
+    <file src="bin\ARM64\Debug\WinRT Safe Storage.pri" target="runtimes\win10-arm64"/>
+
+    <file src="bin\x64\Debug\WinRT Safe Storage.dll" target="runtimes\win10-x64"/>
+    <file src="bin\x64\Debug\WinRT Safe Storage.pri" target="runtimes\win10-x64"/>
+
+    <file src="bin\x86\Debug\WinRT Safe Storage.dll" target="runtimes\win10-x86"/>
+    <file src="bin\x86\Debug\WinRT Safe Storage.pri" target="runtimes\win10-x86"/>
+  </files>
+</package>

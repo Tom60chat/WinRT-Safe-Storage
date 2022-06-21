@@ -279,7 +279,8 @@ namespace WinRT_Safe_Storage.Models
             (await Item.TryGetBasicPropertiesAsync())
                 .OnSuccess(async (bP) => {
                     basicProperties = bP;
-                    properties = await basicProperties.TryRetrievePropertiesAsync(new string[] { "System.ItemTypeText" });
+                    (await basicProperties.TryRetrievePropertiesAsync(new string[] { "System.ItemTypeText" }))
+                        .OnSuccess((p) => properties = p);
                 });
 
             string toolTips = string.Empty;
