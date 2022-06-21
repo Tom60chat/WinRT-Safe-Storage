@@ -1,0 +1,1 @@
+# WinRT Safe Storage
