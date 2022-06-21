@@ -29,4 +29,4 @@ else
 
 ## Download
 
-[Download on Nuget](https://www.nuget.org/packages/WinRTSafeStorage.Tom60/)
+[Download on NuGet](https://www.nuget.org/packages/WinRTSafeStorage.Tom60/)
