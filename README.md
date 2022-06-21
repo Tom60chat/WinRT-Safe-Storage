@@ -26,3 +26,7 @@ if (operation.IsSuccess)
 else
     WarningMessage.Text = operation.Exception.Message;
 ```
+
+## Download
+
+[Download on NuGet](https://www.nuget.org/packages/WinRTSafeStorage.Tom60/)
