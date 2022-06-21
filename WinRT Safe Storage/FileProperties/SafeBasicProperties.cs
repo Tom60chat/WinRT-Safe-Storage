@@ -9,7 +9,7 @@ using WinRT_Safe_Storage.Tools;
 
 namespace WinRT_Safe_Storage.FileProperties
 {
-    public sealed class SafeBasicProperties : Safe, ISafeBasicProperties, ISafeStorageItemExtraProperties
+    public sealed class SafeBasicProperties : ISafeBasicProperties, ISafeStorageItemExtraProperties
     {
         #region Constructors
         /// <summary>
@@ -45,8 +45,8 @@ namespace WinRT_Safe_Storage.FileProperties
         ///     Returns the IDictionary, if this method executes correctly;
         ///     otherwise <see langword="null"/>.
         /// </returns>
-        public Task<IDictionary<string, object>> TryRetrievePropertiesAsync([In] IEnumerable<string> propertiesToRetrieve) =>
-            Try(async () =>
+        public Task<SafeOperation<IDictionary<string, object>>> TryRetrievePropertiesAsync([In] IEnumerable<string> propertiesToRetrieve) =>
+            SafeExecution.Try(async () =>
                 await basicProperties.RetrievePropertiesAsync(propertiesToRetrieve)
             );
 
@@ -56,8 +56,8 @@ namespace WinRT_Safe_Storage.FileProperties
         ///     Returns <see langword="true"/> if the properties was successfully saved;
         ///     otherwise <see langword="false"/>.
         /// </returns>
-        public Task<bool> TrySavePropertiesAsync([HasVariant, In] IEnumerable<KeyValuePair<string, object>> propertiesToSave) =>
-            Try(async () =>
+        public Task<SafeOperation> TrySavePropertiesAsync([HasVariant, In] IEnumerable<KeyValuePair<string, object>> propertiesToSave) =>
+            SafeExecution.Try(async () =>
                 await basicProperties.SavePropertiesAsync(propertiesToSave)
             );
 
@@ -67,8 +67,8 @@ namespace WinRT_Safe_Storage.FileProperties
         ///     Returns <see langword="true"/> if the properties was successfully saved;
         ///     otherwise <see langword="false"/>.
         /// </returns>
-        public Task<bool> TrySavePropertiesAsync() =>
-            Try(async () =>
+        public Task<SafeOperation> TrySavePropertiesAsync() =>
+            SafeExecution.Try(async () =>
                 await basicProperties.SavePropertiesAsync()
             );
         #endregion

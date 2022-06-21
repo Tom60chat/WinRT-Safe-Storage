@@ -131,7 +131,6 @@
     <Compile Include="Tools\SafeOperation.cs" />
     <Compile Include="SafeStorageFile.cs" />
     <Compile Include="SafeStorageFolder.cs" />
-    <Compile Include="Tools\Safe.cs" />
     <Compile Include="Tools\SafeExecution.cs" />
     <Compile Include="UnsafeConverter.cs" />
     <EmbeddedResource Include="Properties\WinRT_Safe_Storage.rd.xml" />
