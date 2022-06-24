@@ -72,6 +72,9 @@ namespace WinRT_Safe_Storage
                 return new SafeStorageFile(value);
             });
 
+        public static Task<SafeOperation<SafeStorageFile>> TryReplaceWithStreamedFileAsync([In] SafeStorageFile fileToReplace, [In] StreamedFileDataRequestedHandler dataRequested, [In] IRandomAccessStreamReference thumbnail) =>
+            TryReplaceWithStreamedFileAsync(fileToReplace.UnsafeFile, dataRequested, thumbnail);
+
         public static Task<SafeOperation<SafeStorageFile>> TryReplaceWithStreamedFileAsync([In] IStorageFile fileToReplace, [In] StreamedFileDataRequestedHandler dataRequested, [In] IRandomAccessStreamReference thumbnail) =>
             SafeExecution.Try(async () =>
             {
@@ -87,6 +90,9 @@ namespace WinRT_Safe_Storage
 
                 return new SafeStorageFile(value);
             });
+
+        public static Task<SafeOperation<SafeStorageFile>> TryReplaceWithStreamedFileFromUriAsync([In] SafeStorageFile fileToReplace, [In] Uri uri, [In] IRandomAccessStreamReference thumbnail) =>
+            TryReplaceWithStreamedFileFromUriAsync(fileToReplace.UnsafeFile, uri, thumbnail);
 
         public static Task<SafeOperation<SafeStorageFile>> TryReplaceWithStreamedFileFromUriAsync([In] IStorageFile fileToReplace, [In] Uri uri, [In] IRandomAccessStreamReference thumbnail) =>
             SafeExecution.Try(async () => {
@@ -110,12 +116,18 @@ namespace WinRT_Safe_Storage
                 await UnsafeFile.OpenTransactedWriteAsync()
             );
 
+        public Task<SafeOperation<SafeStorageFile>> TryCopyAsync([In] SafeStorageFolder destinationFolder) =>
+            TryCopyAsync(destinationFolder.UnsafeFolder);
+
         public Task<SafeOperation<SafeStorageFile>> TryCopyAsync([In] IStorageFolder destinationFolder) =>
             SafeExecution.Try(async () => {
                 var value = await UnsafeFile.CopyAsync(destinationFolder);
 
                 return new SafeStorageFile(value);
             });
+
+        public Task<SafeOperation<SafeStorageFile>> TryCopyAsync([In] SafeStorageFolder destinationFolder, [In] string desiredNewName) =>
+            TryCopyAsync(destinationFolder.UnsafeFolder, desiredNewName);
 
         public Task<SafeOperation<SafeStorageFile>> TryCopyAsync([In] IStorageFolder destinationFolder, [In] string desiredNewName) =>
             SafeExecution.Try(async () => {
@@ -124,6 +136,9 @@ namespace WinRT_Safe_Storage
                 return new SafeStorageFile(value);
             });
 
+        public Task<SafeOperation<SafeStorageFile>> TryCopyAsync([In] SafeStorageFolder destinationFolder, [In] string desiredNewName, [In] NameCollisionOption option) =>
+            TryCopyAsync(destinationFolder.UnsafeFolder, desiredNewName, option);
+
         public Task<SafeOperation<SafeStorageFile>> TryCopyAsync([In] IStorageFolder destinationFolder, [In] string desiredNewName, [In] NameCollisionOption option) =>
             SafeExecution.Try(async () => {
                 var value = await UnsafeFile.CopyAsync(destinationFolder, desiredNewName, option);
@@ -131,25 +146,40 @@ namespace WinRT_Safe_Storage
                 return new SafeStorageFile(value);
             });
 
+        public Task<SafeOperation> TryCopyAndReplaceAsync([In] SafeStorageFile fileToReplace) =>
+            TryCopyAndReplaceAsync(fileToReplace.UnsafeFile);
+
         public Task<SafeOperation> TryCopyAndReplaceAsync([In] IStorageFile fileToReplace) =>
             SafeExecution.Try(async () =>
                 await UnsafeFile.CopyAndReplaceAsync(fileToReplace)
             );
+
+        public Task<SafeOperation> TryMoveAsync([In] SafeStorageFolder destinationFolder) =>
+            TryMoveAsync(destinationFolder.UnsafeFolder);
 
         public Task<SafeOperation> TryMoveAsync([In] IStorageFolder destinationFolder) =>
             SafeExecution.Try(async () => 
                 await UnsafeFile.MoveAsync(destinationFolder)
             );
 
+        public Task<SafeOperation> TryMoveAsync([In] SafeStorageFolder destinationFolder, [In] string desiredNewName) =>
+            TryMoveAsync(destinationFolder.UnsafeFolder, desiredNewName);
+
         public Task<SafeOperation> TryMoveAsync([In] IStorageFolder destinationFolder, [In] string desiredNewName) =>
             SafeExecution.Try(async () => 
                 await UnsafeFile.MoveAsync(destinationFolder, desiredNewName)
             );
 
+        public Task<SafeOperation> TryMoveAsync([In] SafeStorageFolder destinationFolder, [In] string desiredNewName, [In] NameCollisionOption option) =>
+            TryMoveAsync(destinationFolder.UnsafeFolder, desiredNewName, option);
+
         public Task<SafeOperation> TryMoveAsync([In] IStorageFolder destinationFolder, [In] string desiredNewName, [In] NameCollisionOption option) =>
             SafeExecution.Try(async () => 
                 await UnsafeFile.MoveAsync(destinationFolder, desiredNewName, option)
             );
+
+        public Task<SafeOperation> TryMoveAndReplaceAsync([In] SafeStorageFile fileToReplace) =>
+            TryMoveAndReplaceAsync(fileToReplace.UnsafeFile);
 
         public Task<SafeOperation> TryMoveAndReplaceAsync([In] IStorageFile fileToReplace) =>
             SafeExecution.Try(async () =>

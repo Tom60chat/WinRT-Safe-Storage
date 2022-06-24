@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WinRT_Safe_Storage.Models;
+using WinRT_Safe_Storage.Tools;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -59,14 +60,13 @@ namespace WinRT_Safe_Storage.Test
         private async void UrlBar_KeyUp(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Enter)
-                (await SafeStorageFolder.TryGetFolderFromPathAsync(UrlBar.Text))
-                    .OnSuccess((folder) =>
-                        _ = ShowFolder(folder)
-                    )
+                await SafeStorageFolder.TryGetFolderFromPathAsync(UrlBar.Text)
+                    .OnSuccess(async (folder) =>
+                        await ShowFolder(folder) )
                     .OnError((exception) =>
-                        WarningMessage.Text = exception.Message
-                    );
+                        WarningMessage.Text = exception.Message );
         }
+
         private async Task ShowFolder(SafeStorageFolder storageFolder)
         {
             if (storageFolder == null) return;
@@ -81,7 +81,7 @@ namespace WinRT_Safe_Storage.Test
             var currentFolderQuery = storageFolder.CreateItemQueryWithOptions(queryOptions);
 
             // Show item
-            (await currentFolderQuery.TryGetItemsAsync())
+            await currentFolderQuery.TryGetItemsAsync()
                 .OnSuccess((items) =>
                 {
                     Items.Clear();

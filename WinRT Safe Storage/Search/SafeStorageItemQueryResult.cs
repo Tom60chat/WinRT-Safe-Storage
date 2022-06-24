@@ -39,7 +39,7 @@ namespace WinRT_Safe_Storage.Search
                 await storageItemQueryResult.GetItemsAsync(startIndex, maxNumberOfItems));
 
             return operation.IsSuccess ?
-                SafeOperation<IReadOnlyList<ISafeStorageItem>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                SafeOperation<IReadOnlyList<ISafeStorageItem>>.Success(StorageConverter.ToSafe(operation.Value)) :
                 SafeOperation<IReadOnlyList<ISafeStorageItem>>.Error(operation.Exception);
         }
 
@@ -49,7 +49,7 @@ namespace WinRT_Safe_Storage.Search
                 await storageItemQueryResult.GetItemsAsync());
 
             return operation.IsSuccess ?
-                SafeOperation<IReadOnlyList<ISafeStorageItem>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                SafeOperation<IReadOnlyList<ISafeStorageItem>>.Success(StorageConverter.ToSafe(operation.Value)) :
                 SafeOperation<IReadOnlyList<ISafeStorageItem>>.Error(operation.Exception);
         }
 

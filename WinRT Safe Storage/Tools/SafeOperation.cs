@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace WinRT_Safe_Storage.Tools
 {
@@ -49,6 +50,22 @@ namespace WinRT_Safe_Storage.Tools
         {
             if (state == SafeOperation.OperationState.Error)
                 action(Exception);
+
+            return this;
+        }
+
+        public async Task<SafeOperation<T>> OnSuccess(Func<T, Task> action)
+        {
+            if (state == SafeOperation.OperationState.Success)
+                await action(Value);
+
+            return this;
+        }
+
+        public async Task<SafeOperation<T>> OnError(Func<Exception, Task> action)
+        {
+            if (state == SafeOperation.OperationState.Error)
+                await action(Exception);
 
             return this;
         }
@@ -104,6 +121,22 @@ namespace WinRT_Safe_Storage.Tools
         {
             if (state == OperationState.Error)
                 action(Exception);
+
+            return this;
+        }
+
+        public async Task<SafeOperation> OnSuccess(Func<Task> action)
+        {
+            if (state == OperationState.Success)
+                await action();
+
+            return this;
+        }
+
+        public async Task<SafeOperation> OnError(Func<Exception, Task> action)
+        {
+            if (state == OperationState.Error)
+                await action(Exception);
 
             return this;
         }

@@ -29,13 +29,13 @@ namespace WinRT_Safe_Storage.FileProperties
 
         #region Properties
         /// <summary> Gets the timestamp of the last modification of the file. </summary>
-        public DateTimeOffset DateModified { get; }
+        public DateTimeOffset DateModified => basicProperties.DateModified;
 
         /// <summary> Gets the most appropriate date for the item. </summary>
-        public DateTimeOffset ItemDate { get; }
+        public DateTimeOffset ItemDate => basicProperties.ItemDate;
 
         /// <summary> Gets the size of the file, in bytes. </summary>
-        public ulong Size { get; }
+        public ulong Size => basicProperties.Size;
         #endregion
 
         #region Methods

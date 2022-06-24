@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>WinRTSafeStorage.Tom60</id>
-    <version>1.0.0</version>
-    <title>$title$</title>
+    <id>WinRT_SafeStorage</id>
+    <version>1.0.2</version>
+    <title>WinRT Safe Storage</title>
     <authors>Tom OLIVIER</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <license type="file">LICENSE.txt</license>
@@ -23,20 +23,9 @@
   <files>
     <file src="..\LICENSE.txt" target=""/>
     
-    <!-- WinMd and IntelliSense files -->
-    <file src="bin\Debug\WinRT Safe Storage.XML" target="lib\uap10.0.16299"/>
-
-    <!-- WINMDs and resources -->
-    <file src="bin\ARM\Debug\WinRT Safe Storage.dll" target="runtimes\win10-arm"/>
-    <file src="bin\ARM\Debug\WinRT Safe Storage.pri" target="runtimes\win10-arm"/>
-
-    <file src="bin\ARM64\Debug\WinRT Safe Storage.dll" target="runtimes\win10-arm64"/>
-    <file src="bin\ARM64\Debug\WinRT Safe Storage.pri" target="runtimes\win10-arm64"/>
-
-    <file src="bin\x64\Debug\WinRT Safe Storage.dll" target="runtimes\win10-x64"/>
-    <file src="bin\x64\Debug\WinRT Safe Storage.pri" target="runtimes\win10-x64"/>
-
-    <file src="bin\x86\Debug\WinRT Safe Storage.dll" target="runtimes\win10-x86"/>
-    <file src="bin\x86\Debug\WinRT Safe Storage.pri" target="runtimes\win10-x86"/>
+    <!-- UAP -->
+    <file src="bin\Release\WinRT Safe Storage.XML" target="lib\uap10.0.16299"/>
+    <file src="bin\Release\WinRT Safe Storage.dll" target="lib\uap10.0.16299"/>
+    <file src="bin\Release\WinRT Safe Storage.pri" target="lib\uap10.0.16299"/>
   </files>
 </package>

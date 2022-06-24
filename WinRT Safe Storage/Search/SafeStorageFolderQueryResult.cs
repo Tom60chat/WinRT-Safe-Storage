@@ -18,8 +18,10 @@ namespace WinRT_Safe_Storage.Search
             UnsafeFolderQueryResult = storageFolderQueryResult;
             Folder = new SafeStorageFolder(storageFolderQueryResult.Folder);
 
-            storageFolderQueryResult.ContentsChanged += (o, e) => ContentsChanged(o, e);
-            storageFolderQueryResult.OptionsChanged += (o, e) => OptionsChanged(o, e);
+            storageFolderQueryResult.ContentsChanged += (o, e) =>
+                { if (ContentsChanged != null) ContentsChanged(o, e); };
+            storageFolderQueryResult.OptionsChanged += (o, e) =>
+                { if (OptionsChanged != null) OptionsChanged(o, e); };
         }
         #endregion
 
@@ -38,7 +40,7 @@ namespace WinRT_Safe_Storage.Search
                 await UnsafeFolderQueryResult.GetFoldersAsync(startIndex, maxNumberOfItems));
 
             return operation.IsSuccess ?
-                SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(StorageConverter.ToSafe(operation.Value)) :
                 SafeOperation<IReadOnlyList<SafeStorageFolder>>.Error(operation.Exception);
         }
 
@@ -48,7 +50,7 @@ namespace WinRT_Safe_Storage.Search
                 await UnsafeFolderQueryResult.GetFoldersAsync());
 
             return operation.IsSuccess ?
-                SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(StorageConverter.ToSafe(operation.Value)) :
                 SafeOperation<IReadOnlyList<SafeStorageFolder>>.Error(operation.Exception);
         }
 

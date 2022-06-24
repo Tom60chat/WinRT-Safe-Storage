@@ -108,7 +108,7 @@ namespace WinRT_Safe_Storage.Tools
         /// <param name="execution">The methode to execute</param>
         /// <param name="warnUser">Show the exeption message to the user</param>
         /// <returns>What the methode return</returns>
-        public static SafeOperation<T> Try<T>(Action<T> execution)
+        public static SafeOperation<T> Try<T>(Func<T> execution)
         {
             try
             {

@@ -113,7 +113,7 @@ namespace WinRT_Safe_Storage
             {
                 var value = await UnsafeFolder.TryGetItemAsync(name);
 
-                return UnsafeConverter.ToSafe(value);
+                return StorageConverter.ToSafe(value);
             });
 
         public async Task<SafeOperation<IReadOnlyList<SafeStorageFile>>> TryGetFilesAsync()
@@ -121,7 +121,7 @@ namespace WinRT_Safe_Storage
             var operation = await SafeExecution.Try(async () => await UnsafeFolder.GetFilesAsync());
 
             return operation.IsSuccess ?
-                 SafeOperation<IReadOnlyList<SafeStorageFile>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                 SafeOperation<IReadOnlyList<SafeStorageFile>>.Success(StorageConverter.ToSafe(operation.Value)) :
                  SafeOperation<IReadOnlyList<SafeStorageFile>>.Error(operation.Exception);
         }
 
@@ -130,7 +130,7 @@ namespace WinRT_Safe_Storage
             var operation = await SafeExecution.Try(async () => await UnsafeFolder.GetFilesAsync(query));
 
             return operation.IsSuccess ?
-                 SafeOperation<IReadOnlyList<SafeStorageFile>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                 SafeOperation<IReadOnlyList<SafeStorageFile>>.Success(StorageConverter.ToSafe(operation.Value)) :
                  SafeOperation<IReadOnlyList<SafeStorageFile>>.Error(operation.Exception);
         }
 
@@ -140,7 +140,7 @@ namespace WinRT_Safe_Storage
             var operation = await SafeExecution.Try(async () => await UnsafeFolder.GetFilesAsync(query, startIndex, maxItemsToRetrieve));
 
             return operation.IsSuccess ?
-                 SafeOperation<IReadOnlyList<SafeStorageFile>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                 SafeOperation<IReadOnlyList<SafeStorageFile>>.Success(StorageConverter.ToSafe(operation.Value)) :
                  SafeOperation<IReadOnlyList<SafeStorageFile>>.Error(operation.Exception);
         }
 
@@ -149,7 +149,7 @@ namespace WinRT_Safe_Storage
             var operation = await SafeExecution.Try(async () => await UnsafeFolder.GetFoldersAsync());
 
             return operation.IsSuccess ?
-                 SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                 SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(StorageConverter.ToSafe(operation.Value)) :
                  SafeOperation<IReadOnlyList<SafeStorageFolder>>.Error(operation.Exception);
         }
 
@@ -158,7 +158,7 @@ namespace WinRT_Safe_Storage
             var operation = await SafeExecution.Try(async () => await UnsafeFolder.GetFoldersAsync(query));
 
             return operation.IsSuccess ?
-                 SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                 SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(StorageConverter.ToSafe(operation.Value)) :
                  SafeOperation<IReadOnlyList<SafeStorageFolder>>.Error(operation.Exception);
         }
 
@@ -167,7 +167,7 @@ namespace WinRT_Safe_Storage
             var operation = await SafeExecution.Try(async () => await UnsafeFolder.GetFoldersAsync(query, startIndex, maxItemsToRetrieve));
 
             return operation.IsSuccess ?
-                 SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                 SafeOperation<IReadOnlyList<SafeStorageFolder>>.Success(StorageConverter.ToSafe(operation.Value)) :
                  SafeOperation<IReadOnlyList<SafeStorageFolder>>.Error(operation.Exception);
         }
 
@@ -176,7 +176,7 @@ namespace WinRT_Safe_Storage
             var operation = await SafeExecution.Try(async () => await UnsafeFolder.GetItemsAsync());
 
             return operation.IsSuccess ?
-                 SafeOperation<IReadOnlyList<ISafeStorageItem>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                 SafeOperation<IReadOnlyList<ISafeStorageItem>>.Success(StorageConverter.ToSafe(operation.Value)) :
                  SafeOperation<IReadOnlyList<ISafeStorageItem>>.Error(operation.Exception);
         }
 
@@ -185,7 +185,7 @@ namespace WinRT_Safe_Storage
             var operation = await SafeExecution.Try(async () => await UnsafeFolder.GetItemsAsync(startIndex, maxItemsToRetrieve));
 
             return operation.IsSuccess ?
-                 SafeOperation<IReadOnlyList<ISafeStorageItem>>.Success(UnsafeConverter.ToSafe(operation.Value)) :
+                 SafeOperation<IReadOnlyList<ISafeStorageItem>>.Success(StorageConverter.ToSafe(operation.Value)) :
                  SafeOperation<IReadOnlyList<ISafeStorageItem>>.Error(operation.Exception);
         }
 
